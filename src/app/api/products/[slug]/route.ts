@@ -8,9 +8,11 @@ export async function GET(
 ) {
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    const slug = z.string().parse(params.slug)
+    const { slug } = await params;
 
-    const product = data.products.find((product) => product.slug === slug)
+    const slugParsed = z.string().parse(slug)
+
+    const product = data.products.find((product) => product.slug === slugParsed)
 
     if (!product) {
         return Response.json({ message: 'Product not found.' }, { status: 400 })
