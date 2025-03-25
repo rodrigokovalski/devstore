@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import StyledComponentsRegistry from "@/lib/registry";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body
         className="bg-zinc-950 text-zinc-50 antialiased"
       >
-        {children}
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   );
